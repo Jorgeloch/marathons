@@ -31,19 +31,24 @@ int main(void) {
   pair<ull,ull> start = {0, 0};
   ull count = 0;
 
+  // iterate over the map
   for (ull i = 0; i < n; i++) {
     for (ull j = 0; j < m; j++) {
+      // ignore useless positions
       if (map[i][j] == WALL || visited[i][j]) {
         continue;
       }
 
+      // increment counter
       count++;
+
       // initialize a queue to do a BFS
       start = {i, j};
       queue<pair<ull,ull>> q;
       visited[start.first][start.second] = true;
       q.push(start);
 
+      // realize BFS to iterate over all the positions in the same room
       while (!q.empty()) {
         pair<ull,ull> current = q.front();
         q.pop();
